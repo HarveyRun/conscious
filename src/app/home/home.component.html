@@ -1,4 +1,7 @@
-  <div class="topTabs">
-    <div>登录</div>
-    <div>注册</div>
-  </div>
+<!--<editor [init]="getConfig()"></editor>-->
+
+<!-- 响应式表单 -->
+<!--<editor [init]="getConfig()" formControlName="content"></editor>-->
+
+<!-- 模板驱动表单 -->
+<editor [init]="getConfig()" name="content" [(ngModel)]="content" class="editWarp" apiKey="ho5r2os0hll2nogy67uz8fvmzfgeyss6e816mo6qfpwax34v"></editor>

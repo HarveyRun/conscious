@@ -18,8 +18,10 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@tinymce/tinymce-angular": "^6.0.2-feature.20220603072304744.sha40e0b3a",
     "ng-zorro-antd-mobile": "^6.0.0",
     "rxjs": "~7.5.0",
+    "tinymce": "^6.1.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
