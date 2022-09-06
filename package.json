@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
+    "start": "ng serve -o --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@tinymce/tinymce-angular": "^6.0.2-feature.20220603072304744.sha40e0b3a",
+    "@types/lodash": "^4.14.184",
     "ng-zorro-antd-mobile": "^6.0.0",
     "rxjs": "~7.5.0",
     "tinymce": "^6.1.2",
