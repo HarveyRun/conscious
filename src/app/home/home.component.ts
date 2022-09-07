@@ -42,13 +42,23 @@ export class HomeComponent implements OnInit {
       language: 'zh_CN',
       placeholder: '开始编写吧',
       setup: (editor:any) => {
+        editor.on('init', function(e:any) {
+          editor.getBody().style.fontSize = '16px';
+          editor.getBody().style.color = '#000000';
+          editor.getBody().style.fontFamily = 'Helvetica';
+        });
+        editor.ui.registry.addButton('writeFinish', {
+          text: '',
+          icon: 'checkmark',
+          onAction: () => {
+             alert("完成了编写");
+          }
+        });
         editor.ui.registry.addButton('myCustomImageUpload', {
           text: '',
           icon: 'image',
           onAction: () => {
-            console.dir(this);
-            let filetype =
-              '.jpg, .jpeg, .png, .gif';
+            let filetype = ".jpg, .jpeg, .png, .gif";
             let input = document.createElement('input')
             input.setAttribute('type', 'file')
             input.setAttribute('style', 'display:none')
@@ -64,21 +74,22 @@ export class HomeComponent implements OnInit {
         });
       },
       menubar: false,
-      plugins: 'image lists emoticons code',
-      toolbar: 'undo redo bold myCustomImageUpload checklist justifying formatting code',
+      plugins: 'image lists emoticons code autosave codesample table charmap link export',
+      toolbar: 'undo redo bold forecolor myCustomImageUpload bullist checklist justifying formatting writeFinish',
       toolbar_groups: {
         formatting: {
           icon: 'plus',
           tooltip: 'Formatting',
-          items: 'h1 h2 h3 h4 h5 h6 italic underline strikethrough hr emoticons'
+          items: 'fontsize h1 h2 h3 h4 h5 h6 italic underline strikethrough | table link | emoticons charmap codesample | export'
         },
         justifying: {
            icon: 'align-justify',
            tooltip: 'Justifying',
-           items: 'alignleft aligncenter alignright bullist numlist'
+           items: 'hr outdent indent numlist | alignleft aligncenter alignright'
         }
       },
       emoticons_database: 'emojis',
+      font_size_formats: "12px 14px 16px 18px 20px 24px 36px 48px 56px 72px",
       height: '100%',
       branding: false,
       statusbar: false,
