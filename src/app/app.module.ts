@@ -20,8 +20,8 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     NgZorroAntdMobileModule,
     EditorModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+],
   providers: [
     { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
   ],
