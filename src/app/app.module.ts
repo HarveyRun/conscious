@@ -8,11 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { EditorComponent } from './components/editor/editor.component';
+import { TinyeditComponent } from './tinyedit/tinyedit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    EditorComponent,
+    TinyeditComponent,
   ],
   imports: [
     BrowserModule,
