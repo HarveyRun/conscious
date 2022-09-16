@@ -1,6 +1,27 @@
+@import './common/styles/business-style.css';
+@import './common/styles/business-style-Impl.css';
+
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
 /* You can add global styles to this file, and also import other style files */
 body{
   min-height: 100vh;
   width:100%;
   background-color: #ffffff;
 }
+@font-face {
+  font-family: "cons";
+  src: url("./common/icons/font/iconfont.woff2?t=1623751756270") format("woff2"),
+  url("./common/icons/font/iconfont.woff?t=1623751756270") format("woff"),
+  url("./common/icons/font/iconfont.ttf?t=1623751756270") format("truetype");
+}
+.cons {
+  font-family: "cons" !important;
+  font-size: 14px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+

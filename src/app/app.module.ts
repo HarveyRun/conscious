@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { SwiperModule } from 'swiper/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { TinyeditComponent } from './tinyedit/tinyedit.component';
     NgZorroAntdMobileModule,
     EditorModule,
     HttpClientModule,
+    SwiperModule
 ],
   providers: [
     { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
