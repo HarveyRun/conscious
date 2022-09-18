@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { TinyeditComponent } from './tinyedit/tinyedit.component';
+import { ExampleComponent } from './example/example.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TinyeditComponent } from './tinyedit/tinyedit.component';
     HomeComponent,
     EditorComponent,
     TinyeditComponent,
+    ExampleComponent,
   ],
   imports: [
     BrowserModule,

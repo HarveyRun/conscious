@@ -1,13 +1,15 @@
 import { Component, OnInit} from '@angular/core';
+import SwiperCore, { SwiperOptions,Pagination, Navigation } from 'swiper';
 import { ActivatedRoute,Router } from "@angular/router";
+SwiperCore.use([Pagination, Navigation])
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-example',
+  templateUrl: './example.component.html',
+  styleUrls: ['./example.component.scss']
 })
-export class AppComponent implements OnInit{
-  title = 'conscious';
+
+export class ExampleComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
@@ -19,10 +21,27 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
 
   }
+
+  config: SwiperOptions = {
+    slidesPerView: 1,
+    spaceBetween: 50,
+    navigation: false,
+    pagination: {
+      clickable: true,
+    },
+    scrollbar: { draggable: true },
+  };
   fullScreen: boolean = true;
   tintColor: string = '#108ee9';
   unselectedTintColor: string = '#888';
   selectedIndex: number = 0;
+
+  onSwiper(e:any) {
+    console.dir(e);
+  }
+  onSlideChange() {
+    console.log('slide change');
+  }
 
   //切换tabBar
   tabBarTabOnPress(pressParam: any) {

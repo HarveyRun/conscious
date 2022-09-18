@@ -1,7 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import SwiperCore, { SwiperOptions,Pagination, Navigation } from 'swiper';
-import { ActivatedRoute,Router } from "@angular/router";
-SwiperCore.use([Pagination, Navigation])
 
 @Component({
   selector: 'app-home',
@@ -10,57 +7,81 @@ SwiperCore.use([Pagination, Navigation])
 })
 export class HomeComponent implements OnInit {
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
+  isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(window.navigator.userAgent);
+  pageLimit = 20;
+  public directionCount = 0;
+  page = 0;
+  typeOption = { content: "该组件只支持Touch事件，请使用移动模式/设备打开此页。", marqueeProps: { fps: 100 } };
+  state = {
+    refreshState: {
+      currentState: 'deactivate',
+      drag: false
+    },
+    direction: '',
+    endReachedRefresh: false,
+    height: 500,
+    data: [],
+    directionName: 'both up and down'
+  };
+  dtPullToRefreshStyle = { height: this.state.height + 'px' };
 
-  }
+  constructor() {}
 
   ngOnInit(): void {
-
+    this.addItems(0);
   }
 
-  config: SwiperOptions = {
-    slidesPerView: 1,
-    spaceBetween: 50,
-    navigation: false,
-    pagination: {
-      clickable: true,
-    },
-    scrollbar: { draggable: true },
-  };
-  fullScreen: boolean = true;
-  tintColor: string = '#108ee9';
-  unselectedTintColor: string = '#888';
-  selectedIndex: number = 0;
-
-  onSwiper(e:any) {
-    console.dir(e);
-  }
-  onSlideChange() {
-    console.log('slide change');
-  }
-
-  //切换tabBar
-  tabBarTabOnPress(pressParam: any) {
-    this.selectedIndex = pressParam.index;
-    if(pressParam.index == 2){
-      this.toEditPage();
+  onClick() {
+    this.directionCount++;
+    switch (this.directionCount) {
+      case 0:
+        this.state.direction = '';
+        this.state.directionName = 'both up and down';
+        break;
+      case 1:
+        this.state.direction = 'down';
+        this.state.endReachedRefresh = true;
+        this.state.directionName = 'down';
+        break;
+      case 2:
+        this.state.direction = 'up';
+        this.state.directionName = 'up';
+        break;
+      default:
+        this.directionCount = 0;
+        this.state.direction = '';
+        this.state.directionName = 'both up and down';
+        break;
     }
   }
 
-  toEditPage(): void {
-    //https://blog.tcs-y.com/2019/03/28/ng2-router-paramMap-queryParamMap/
-    this.router.navigate(['edit'] , {
-      queryParams: {
-        a: 1,
-        b: 2
-      },
-      skipLocationChange : true  //是否隐藏路由参数
-    }).then(r =>{
+  pullToRefresh(event:any) {
+    if (event === 'endReachedRefresh') {
+      if (this.page < 9) {
+        this.page++;
+        this.addItems(this.page * this.pageLimit);
+        this.state.refreshState.currentState = 'release';
+        setTimeout(() => {
+          this.state.refreshState.currentState = 'finish';
+        }, 1000);
+      }
+    } else {
+      if (event === 'down') {
+        this.state.data = [];
+        this.page = 0;
+        this.addItems(0);
+      } else {
+        if (this.page < 9) {
+          this.page++;
+          this.addItems(this.page * this.pageLimit);
+        }
+      }
+    }
+  }
 
-    })
-   }
+  addItems(startIndex:any) {
+    for (let i: number = startIndex; i < this.pageLimit * (this.page + 1); i++) {
+    }
+  }
 
 }

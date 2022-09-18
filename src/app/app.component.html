@@ -1,1 +1,81 @@
-<router-outlet></router-outlet>
+<div class="comm-app">
+  <div class="comm-view">
+    <router-outlet></router-outlet>
+  </div>
+  <TabBar
+    [barTintColor]="'white'"
+    [tintColor]="tintColor"
+    [activeTab]="selectedIndex"
+    [unselectedTintColor]="unselectedTintColor"
+    (onPress)="tabBarTabOnPress($event)"
+  >
+    <TabBarItem [title]="'推荐'" key="1"  [icon]="icon1" [selectedIcon]="icon2">
+      <ng-template #icon1>
+        <span class="cons font24-imp">&#xe634;</span>
+      </ng-template>
+      <ng-template #icon2>
+        <span class="cons font24-imp" style="color:#108ee9;">&#xe634;</span>
+      </ng-template>
+      <div style="background-color: white; height: 100%; text-align: center">
+        <ng-container>
+          <ng-template [ngTemplateOutlet]="content"></ng-template>
+        </ng-container>
+      </div>
+    </TabBarItem>
+    <TabBarItem [title]="'需求墙'" key="2" [badge]="'99+'" [icon]="icon3" [selectedIcon]="icon4">
+      <ng-template #icon3>
+        <span class="cons font24-imp">&#xe6e3;</span>
+      </ng-template>
+      <ng-template #icon4>
+        <span class="cons font24-imp" style="color:#108ee9;">&#xe6e3;</span>
+      </ng-template>
+      <div style="background-color: white; height: 100%; text-align: center">
+        <ng-container>
+          <ng-template [ngTemplateOutlet]="content"></ng-template>
+        </ng-container>
+      </div>
+    </TabBarItem>
+    <TabBarItem [title]="'写文章'" key="3"  [icon]="icon5" [selectedIcon]="icon6">
+      <ng-template #icon5>
+        <span class="cons font24-imp">&#xe6b6;</span>
+      </ng-template>
+      <ng-template #icon6>
+        <span class="cons font24-imp" style="color:#108ee9">&#xe6b6;</span>
+      </ng-template>
+      <div style="background-color: white; height: 100%; text-align: center">
+        <ng-container>
+          <ng-template [ngTemplateOutlet]="content"></ng-template>
+        </ng-container>
+      </div>
+    </TabBarItem>
+    <TabBarItem [title]="'排行榜'" key="4" [dot]="false" [icon]="icon7" [selectedIcon]="icon8">
+      <ng-template #icon7>
+        <span class="cons font24-imp">&#xe659;</span>
+      </ng-template>
+      <ng-template #icon8>
+        <span class="cons font24-imp" style="color:#108ee9">&#xe659;</span>
+      </ng-template>
+      <div style="background-color: white; height: 100%; text-align: center">
+        <ng-container>
+          <ng-template [ngTemplateOutlet]="content"></ng-template>
+        </ng-container>
+      </div>
+    </TabBarItem>
+    <TabBarItem [title]="'我的'" key="5" [icon]="icon9" [selectedIcon]="icon10">
+      <ng-template #icon9>
+        <span class="cons font24-imp">&#xe639;</span>
+      </ng-template>
+      <ng-template #icon10>
+        <span class="cons font24-imp" style="color:#108ee9">&#xe639;</span>
+      </ng-template>
+      <div style="background-color: white; height: 100%; text-align: center">
+        <ng-container>
+          <ng-template [ngTemplateOutlet]="content"></ng-template>
+        </ng-container>
+      </div>
+    </TabBarItem>
+  </TabBar>
+  <ng-template #content></ng-template>
+</div>
+
+
