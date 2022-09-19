@@ -11,9 +11,13 @@ $browser-default-font-size: 100px !default;
     .item-title{
       display: flex;
       align-items:center;
+      overflow:hidden; //超出的文本隐藏
+      text-overflow:ellipsis; //溢出用省略号显示
+      white-space:nowrap; //溢出不换行
       p{
         font-size: pxTorem(16px);
         font-weight: bold;
+        color:#262626;
       }
       img{
         width:pxTorem(30px);
@@ -24,6 +28,11 @@ $browser-default-font-size: 100px !default;
     }
     .item-detail{
       display: flex;
+      font-size: 14px;
+      color:#585a5a;
+    }
+    .item-footer{
+      color:#8a8f8d;
     }
   }
 }
