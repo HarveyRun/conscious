@@ -10,10 +10,57 @@
     }
   </style>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    // 只适用于移动端，没有处理pc端的显示，在pc端页面会显示地很大。
+    (function(window, html) {
+      // 默认的设计稿宽度750px
+      var designWidth = 750;
+
+      function recalc() {
+        //var windowWidth = html.clientWidth < designWidth ? html.clientWidth : designWidth;
+        // 获取页面的宽度
+        var windowWidth = html.clientWidth;
+
+        // 我的理解是： 将页面等分成 designWidth 份
+        // 这样的话，设计稿中的1px 就等于 1rem，方便转换px和rem
+        // 后面又 *100 ，我觉得是确保计算出来的值是非小数，保证之后的计算精度。
+        // *100 之后，则样式中rem的值就需要相应的缩小100背
+        // 即：设计稿中的20px，在样式中就要写成0.2rem
+        var fontSize = windowWidth / designWidth * 100;
+
+        setFontSize(fontSize);
+
+        var completedFontSize = getFontSize();
+
+        // 如果实际 fontSize 与设置的 fontSize 不等，则根据比例，重新计算
+        // 存在浏览器自动放大font-size的问题
+        // 参考：https://www.cnblogs.com/keaizhouzhou/p/6702551.html
+        if (Math.abs(completedFontSize - fontSize) > 0.1) {
+          setFontSize(fontSize * fontSize / completedFontSize);
+        }
+      }
+
+      function setFontSize(fontSize) {
+        html.style.fontSize = fontSize + 'px';
+      }
+
+      function getFontSize() {
+        return parseFloat(window.getComputedStyle(html)['font-size']);
+      }
+
+      window.calcRem = function(width) {
+        designWidth = width;
+        recalc();
+        // 监听resize
+        window.addEventListener('resize', recalc);
+      }
+    }(window, document.documentElement));
+    window.calcRem(375);
+  </script>
 </body>
 </html>

@@ -1,0 +1,30 @@
+$browser-default-font-size: 100px !default;
+@function pxTorem($px){
+  @return $px / $browser-default-font-size * 1rem;
+}
+
+.home-component{
+  height:auto;
+  padding: pxTorem(20px);
+  .item-warp{
+    margin-bottom: pxTorem(20px);
+    .item-title{
+      display: flex;
+      align-items:center;
+      p{
+        font-size: pxTorem(16px);
+        font-weight: bold;
+      }
+      img{
+        width:pxTorem(30px);
+        height:pxTorem(30px);
+        border-radius: 50%;
+        margin-right: pxTorem(15px);
+      }
+    }
+    .item-detail{
+      display: flex;
+    }
+  }
+}
+

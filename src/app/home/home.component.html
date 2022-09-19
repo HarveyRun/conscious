@@ -1,18 +1,37 @@
-<NoticeBar
-  *ngIf="!isMobile"
-  style="margin-bottom: 10px"
-></NoticeBar>
-<div Button (onClick)="onClick()">direction: {{ state.directionName }}</div>
-<PullToRefresh
-  [ngStyle]="dtPullToRefreshStyle"
-  [direction]="state.direction"
-  [(ngModel)]="state.refreshState"
-  [endReachedRefresh]="state.endReachedRefresh"
-  (onRefresh)="pullToRefresh($event)"
->
-  <div *ngFor="let i of this.state.data" style="text-align: center; padding: 20px">{{ i }}</div>
-</PullToRefresh>
+<div class="home-component">
+  <NoticeBar
+    *ngIf="!isMobile"
+    style="margin-bottom: 10px"
+    [option]="typeOption"
+  ></NoticeBar>
+  <PullToRefresh
+    [ngStyle]="dtPullToRefreshStyle"
+    [(ngModel)]="state.refreshState"
+    [endReachedRefresh]="state.endReachedRefresh"
+    (onRefresh)="pullToRefresh($event)"
+  >
+    <div *ngFor="let i of this.state.data">
+      <div class="item-warp">
+        <div class="item-title">
+          <img src="https://uploadfile.huiyi8.com/up/6c/67/95/6c67951ea0fbe179c64d963b1ee8f5ab.jpg.270.jpg" alt="">
+          <p>如何选择10万以内的轿车？</p>
+        </div>
+        <div class="item-detail">
+          <div class="detail-text">
+            主要选购大类：
+            1：合资车
+            2：国产车
+          </div>
+          <div class="detail-img"></div>
+        </div>
+        <div class="item-footer">
+          <p><span>程小雪</span> 2022/06/21 12:05</p>
+        </div>
+      </div>
+    </div>
+  </PullToRefresh>
+  <ng-template #loading>
+    <Icon type="loading"></Icon>
+  </ng-template>
+</div>
 
-<ng-template #loading>
-  <Icon type="loading"></Icon>
-</ng-template>
