@@ -1,13 +1,13 @@
 $browser-default-font-size: 100px !default;
-@function pxTorem($px){
+@function pxToRem($px){
   @return $px / $browser-default-font-size * 1rem;
 }
 
 .home-component{
   height:auto;
-  padding: pxTorem(20px);
+  padding: pxToRem(20px);
   .item-warp{
-    margin-bottom: pxTorem(20px);
+    margin-bottom: pxToRem(20px);
     .item-title{
       display: flex;
       align-items:center;
@@ -15,15 +15,15 @@ $browser-default-font-size: 100px !default;
       text-overflow:ellipsis; //溢出用省略号显示
       white-space:nowrap; //溢出不换行
       p{
-        font-size: pxTorem(16px);
+        font-size: pxToRem(16px);
         font-weight: bold;
         color:#262626;
       }
       img{
-        width:pxTorem(30px);
-        height:pxTorem(30px);
+        width:pxToRem(30px);
+        height:pxToRem(30px);
         border-radius: 50%;
-        margin-right: pxTorem(15px);
+        margin-right: pxToRem(15px);
       }
     }
     .item-detail{
